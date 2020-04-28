@@ -37,8 +37,8 @@ public class UIUCRestaurants {
     private Restaurant x = new Restaurant("", "", "", new int[]{},
             new int[]{}, new int[]{}, new int[]{}, new int[]{}, new int[]{}, new int[]{});
 
-    private Restaurant x = new Restaurant("", "", "", new int[]{},
-            new int[]{}, new int[]{}, new int[]{}, new int[]{}, new int[]{}, new int[]{});
+    //private Restaurant x = new Restaurant("", "", "", new int[]{},
+    //        new int[]{}, new int[]{}, new int[]{}, new int[]{}, new int[]{}, new int[]{});
 
     private Restaurant[] allRestaurants;
 
