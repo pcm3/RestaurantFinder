@@ -68,4 +68,9 @@ public class UIUCRestaurants {
         return openRestaurants.get(index);
     }
 
+    public Restaurant testGetRandomRestaurant() {
+        int randomInt = r.nextInt(allRestaurants.length);
+        return allRestaurants[randomInt];
+    }
+
 }
