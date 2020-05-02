@@ -34,11 +34,11 @@ public class UIUCRestaurants {
     private Restaurant bangkok = new Restaurant("Bangkok Thai & Pho 911", "Thai", "410 E Green St. Champaign, IL", new int[]{1100, 2100},
             new int[]{1100, 2100}, new int[]{1100, 2100}, new int[]{1100, 2100}, new int[]{1100, 2100}, new int[]{1100, 2100}, new int[]{1100, 2100});
 
+    private Restaurant zorbas = new Restaurant("Zorba's", "Mediterranean", "627 E Green St, Champaign, IL", new int[]{1100, 2200},
+            new int[]{1100, 2200}, new int[]{1100, 2200}, new int[]{1100, 2400}, new int[]{0, 300, 1100, 2400}, new int[]{0, 300, 1100, 2400}, new int[]{0, 300, 1100, 2200});
+
     private Restaurant x = new Restaurant("", "", "", new int[]{},
             new int[]{}, new int[]{}, new int[]{}, new int[]{}, new int[]{}, new int[]{});
-
-    //private Restaurant x = new Restaurant("", "", "", new int[]{},
-    //        new int[]{}, new int[]{}, new int[]{}, new int[]{}, new int[]{}, new int[]{});
 
     private Restaurant[] allRestaurants;
 
@@ -47,7 +47,8 @@ public class UIUCRestaurants {
     private List<Restaurant> openRestaurants = new ArrayList<>();
 
     public UIUCRestaurants() {
-        allRestaurants = new Restaurant[]{pandaExpress, sakanaya, spoonhouse, midSummerLounge, aRiRang, sigGrill, noodles, chipotle, bangkok};
+        allRestaurants = new Restaurant[]{pandaExpress, sakanaya, spoonhouse, midSummerLounge, aRiRang, sigGrill, noodles, chipotle, bangkok,
+        zorbas};
     }
 
     public void getOpenRestaurants(String day, int time) {
