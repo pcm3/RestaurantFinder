@@ -47,7 +47,7 @@ public class UIUCRestaurants {
     private List<Restaurant> openRestaurants = new ArrayList<>();
 
     public UIUCRestaurants() {
-        allRestaurants = new Restaurant[]{pandaExpress, sakanaya, spoonhouse, midSummerLounge, aRiRang, sigGrill, noodles, chipotle};
+        allRestaurants = new Restaurant[]{pandaExpress, sakanaya, spoonhouse, midSummerLounge, aRiRang, sigGrill, noodles, chipotle, bangkok};
     }
 
     public void getOpenRestaurants(String day, int time) {
@@ -60,17 +60,21 @@ public class UIUCRestaurants {
         openRestaurants = temp;
     }
 
-    public Restaurant getRandomRestaurant() {
+    public Restaurant getRandomRestaurant(String day, int time) {
+        getOpenRestaurants(day, time);
         if (openRestaurants.size() == 0) {
-            return new Restaurant("Cook at Home");
+            return new Restaurant("Nothing is Open");
         }
         int index = r.nextInt(openRestaurants.size());
         return openRestaurants.get(index);
     }
 
-    public Restaurant testGetRandomRestaurant() {
-        int randomInt = r.nextInt(allRestaurants.length);
-        return allRestaurants[randomInt];
+    public List<Restaurant> getOpenRestaurantsList() {
+        return openRestaurants;
+    }
+
+    public int getListSize() {
+        return openRestaurants.size();
     }
 
 }

@@ -2,7 +2,8 @@
     <string name="app_name">RestaurantFinder</string>
     <string name="search_button">Find Restaurant</string>
     <string name="top_text">Press Button Below to Generate Restaurant</string>
-    <string name="date_check">Check the date and time: </string>
+    <string name="date_check">Number of restaurants open: </string>
     <string name="restaurant_id">Restaurant: </string>
-    <string name="restaurant_address">address: </string>
+    <string name="restaurant_address">Address: </string>
+    <string name="type_of_food">Type of Food: </string>
 </resources>

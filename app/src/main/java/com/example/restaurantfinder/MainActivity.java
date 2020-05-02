@@ -34,37 +34,62 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     time = "" + hour + minutes;
                 }
+                String dayStr = "";
                 int timeInt = Integer.parseInt(time);
                 TextView t = findViewById(R.id.date_and_time);
                 t.setVisibility(View.VISIBLE);
                 if (day == 1) {
                     t.setText("Sunday" + time);
+                    dayStr = "Sunday";
                 } else if (day == 2) {
                     t.setText("Monday" + " " + timeInt);
+                    dayStr = "Monday";
                 } else if (day == 3) {
                     t.setText("Tuesday" + " " + timeInt);
+                    dayStr = "Tuesday";
                 } else if (day == 4) {
                     t.setText("Wednesday" + " " + timeInt);
+                    dayStr = "Wednesday";
                 } else if (day == 5) {
                     t.setText("Thursday" + " " + timeInt);
+                    dayStr = "Thursday";
                 } else if (day == 6) {
                     t.setText("Friday" + " " + timeInt);
+                    dayStr = "Friday";
                 } else if (day == 7) {
                     t.setText("Saturday" + " " + timeInt);
+                    dayStr = "Saturday";
                 }
-                Restaurant restaurant = restaurants.testGetRandomRestaurant();
+                //Restaurant restaurant = restaurants.testGetRandomRestaurant();
+                Restaurant restaurant = restaurants.getRandomRestaurant(dayStr, timeInt);
                 String rName = restaurant.getName();
-                String rAddress = restaurant.getAddress();
+                TextView restaurantName = findViewById(R.id.restaurant_name);
                 TextView restaurantAddress = findViewById(R.id.restaurant_address);
                 TextView restaurantAddressId = findViewById(R.id.restaurant_address_id);
-                TextView restaurantName = findViewById(R.id.restaurant_name);
                 TextView restaurantNameId = findViewById(R.id.restaurant_id);
-                restaurantAddress.setText(rAddress);
+                TextView typeOfFood = findViewById(R.id.type_of_food);
+                TextView typeOfFoodId = findViewById(R.id.type_of_food_id);
                 restaurantName.setText(rName);
-                restaurantAddress.setVisibility(View.VISIBLE);
-                restaurantAddressId.setVisibility(View.VISIBLE);
                 restaurantName.setVisibility(View.VISIBLE);
-                restaurantNameId.setVisibility(View.VISIBLE);
+                int sizeTest = restaurants.getListSize();
+                t.setText("" + sizeTest);
+                if (restaurants.getOpenRestaurantsList().size() > 1) {
+                    String rAddress = restaurant.getAddress();
+                    String rFood = restaurant.getTypeOfFood();
+                    restaurantAddress.setText(rAddress);
+                    typeOfFood.setText(rFood);
+                    restaurantAddress.setVisibility(View.VISIBLE);
+                    restaurantAddressId.setVisibility(View.VISIBLE);
+                    restaurantNameId.setVisibility(View.VISIBLE);
+                    typeOfFood.setVisibility(View.VISIBLE);
+                    typeOfFoodId.setVisibility(View.VISIBLE);
+                } else {
+                    restaurantAddress.setVisibility(View.INVISIBLE);
+                    restaurantAddressId.setVisibility(View.INVISIBLE);
+                    restaurantNameId.setVisibility(View.INVISIBLE);
+                    typeOfFood.setVisibility(View.INVISIBLE);
+                    typeOfFoodId.setVisibility(View.INVISIBLE);
+                }
             }
         });
     }

@@ -2,8 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <Button
@@ -34,9 +36,9 @@
         android:id="@+id/date_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="224dp"
-        android:layout_marginRight="224dp"
-        android:layout_marginBottom="352dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginRight="220dp"
+        android:layout_marginBottom="412dp"
         android:text="@string/date_check"
         app:layout_constraintBottom_toTopOf="@+id/search_button"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -45,9 +47,9 @@
         android:id="@+id/date_and_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginLeft="23dp"
-        android:layout_marginBottom="352dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="412dp"
         android:text="@android:string/ok"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/search_button"
@@ -100,4 +102,29 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/search_button"
         app:layout_constraintStart_toEndOf="@+id/restaurant_address_id" />
+
+    <TextView
+        android:id="@+id/type_of_food_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="275dp"
+        android:layout_marginRight="275dp"
+        android:layout_marginBottom="289dp"
+        android:text="@string/type_of_food"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/type_of_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="201dp"
+        android:text="@android:string/yes"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/search_button"
+        app:layout_constraintStart_toEndOf="@+id/type_of_food_id" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
