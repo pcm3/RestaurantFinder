@@ -1,9 +1,6 @@
 package com.example.restaurantfinder;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.solver.widgets.ConstraintWidgetGroup;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.Group;
 
 import android.icu.util.Calendar;
 import android.media.MediaPlayer;
@@ -76,15 +73,12 @@ public class MainActivity extends AppCompatActivity {
                 String rName = restaurant.getName();
                 String rAddress = restaurant.getAddress();
                 String rFood = restaurant.getTypeOfFood();
-                //Group main = (Group) findViewById(R.id.mainConstraint);
-                ConstraintLayout main = findViewById(R.id.mainConstraint);
                 TextView restaurantName = findViewById(R.id.restaurant_name);
                 TextView restaurantAddress = findViewById(R.id.restaurant_address);
                 TextView restaurantAddressId = findViewById(R.id.restaurant_address_id);
                 TextView restaurantNameId = findViewById(R.id.restaurant_id);
                 TextView typeOfFood = findViewById(R.id.type_of_food);
                 TextView typeOfFoodId = findViewById(R.id.type_of_food_id);
-                main.setVisibility(View.VISIBLE);
                 restaurantName.setVisibility(View.VISIBLE);
                 restaurantAddress.setVisibility(View.VISIBLE);
                 restaurantAddressId.setVisibility(View.VISIBLE);
