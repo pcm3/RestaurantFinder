@@ -85,17 +85,18 @@ public class MainActivity extends AppCompatActivity {
                 typeOfFood.setVisibility(View.VISIBLE);
                 typeOfFoodId.setVisibility(View.VISIBLE);
                 if (restaurants.getOpenRestaurantsList().size() > 1) {
-                    oscillate(restaurantName, restaurantAddress, typeOfFood, restaurants.getOpenRestaurantsList());
+                    oscillate(restaurantName, restaurantAddress, typeOfFood, restaurants.getOpenRestaurantsList(), rName, rAddress, rFood);
+                } else {
+                    restaurantAddress.setText(rAddress);
+                    typeOfFood.setText(rFood);
+                    restaurantName.setText(rName);
                 }
-                restaurantAddress.setText(rAddress);
-                typeOfFood.setText(rFood);
-                restaurantName.setText(rName);
             }
         });
     }
 
     public void oscillate(final TextView restaurantName, final TextView restaurantAddress,
-            final TextView typeOfFood, final List<Restaurant> testList) {
+            final TextView typeOfFood, final List<Restaurant> testList, final String name, final String address, final String food) {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -253,8 +254,9 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Restaurant r = testList.get(index);
-                String rName = r.getName();
+                typeOfFood.setText(food);
+                restaurantName.setText(name);
+                restaurantAddress.setText(address);
             }
         }, 3500);
     }
