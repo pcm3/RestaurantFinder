@@ -132,6 +132,9 @@ public class UIUCRestaurants {
     private Restaurant dominos = new Restaurant("Domino's Pizza", "Pizza", "55 E Green St", new int[]{1100, 2300},
             new int[]{1100, 2300}, new int[]{1100, 2300}, new int[]{1100, 2300}, new int[]{1100, 2400}, new int[]{1100, 2400}, new int[]{1100, 2300});
 
+    private Restaurant cracked = new Restaurant("Cracked the Egg Came First", "Pizza", "619 E Green St", new int[]{800, 1400},
+            new int[]{800, 1400}, new int[]{800, 1400}, new int[]{800, 1400}, new int[]{800, 1400}, new int[]{800, 1400}, new int[]{800, 1400});
+
     private Restaurant[] allRestaurants;
 
     private Random r = new Random();
@@ -142,7 +145,7 @@ public class UIUCRestaurants {
         allRestaurants = new Restaurant[]{pandaExpress, sakanaya, spoonhouse, midSummerLounge, aRiRang, sigGrill, noodles, chipotle, bangkok,
         zorbas, jurassicGrill, jerusalem, cravings, ambarIndia, sushiIchiban, subway, mcdonalds, jipbap, ozuRamen, parisSuperCrepes, pokelab,
                 spicyTang, tacoBell, miaZas, howdy, sushiRock, phoCafe, potbelly, pizzaHut, burritoKingMexicanGrill, boBoChina, laiLaiWok,
-                bombayIndianGrill, fourBreakfast, shiquan, chopstix, papaJohn, maize, dominos};
+                bombayIndianGrill, fourBreakfast, shiquan, chopstix, papaJohn, maize, dominos, cracked};
     }
 
     public void getOpenRestaurants(String day, int time) {
