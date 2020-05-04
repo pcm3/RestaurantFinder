@@ -155,8 +155,7 @@ public class UIUCRestaurants {
         openRestaurants = temp;
     }
 
-    public Restaurant getRandomRestaurant(String day, int time) {
-        getOpenRestaurants(day, time);
+    public Restaurant getRandomRestaurant() {
         if (openRestaurants.size() == 0) {
             return new Restaurant("Nothing is Open");
         }

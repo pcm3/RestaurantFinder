@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,19 +12,23 @@ import android.widget.TextView;
 import com.example.restaurantfinder.logic.Restaurant;
 import com.example.restaurantfinder.logic.UIUCRestaurants;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     UIUCRestaurants restaurants = new UIUCRestaurants();
+    int index = 0;
+    final Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         final Button b = findViewById(R.id.search_button);
-        b.setOnClickListener(new View.OnClickListener() {
+
+        handler.post(new Runnable() {
             @Override
-            public void onClick(View v) {
+            public void run() {
                 Calendar now = Calendar.getInstance();
                 int day = now.get(Calendar.DAY_OF_WEEK);
                 int hour = now.get(Calendar.HOUR_OF_DAY);
@@ -39,58 +44,237 @@ public class MainActivity extends AppCompatActivity {
                 TextView t = findViewById(R.id.date_and_time);
                 t.setVisibility(View.VISIBLE);
                 if (day == 1) {
-                    t.setText("Sunday" + time);
                     dayStr = "Sunday";
                 } else if (day == 2) {
-                    t.setText("Monday" + " " + timeInt);
                     dayStr = "Monday";
                 } else if (day == 3) {
-                    t.setText("Tuesday" + " " + timeInt);
                     dayStr = "Tuesday";
                 } else if (day == 4) {
-                    t.setText("Wednesday" + " " + timeInt);
                     dayStr = "Wednesday";
                 } else if (day == 5) {
-                    t.setText("Thursday" + " " + timeInt);
                     dayStr = "Thursday";
                 } else if (day == 6) {
-                    t.setText("Friday" + " " + timeInt);
                     dayStr = "Friday";
                 } else if (day == 7) {
-                    t.setText("Saturday" + " " + timeInt);
                     dayStr = "Saturday";
                 }
-                //Restaurant restaurant = restaurants.testGetRandomRestaurant();
-                Restaurant restaurant = restaurants.getRandomRestaurant(dayStr, timeInt);
+                restaurants.getOpenRestaurants(dayStr, timeInt);
+                int listSize = restaurants.getListSize();
+                t.setText("" + listSize);
+                handler.postDelayed(this, 500);
+            }
+        });
+
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Restaurant restaurant = restaurants.getRandomRestaurant();
                 String rName = restaurant.getName();
+                String rAddress = restaurant.getAddress();
+                String rFood = restaurant.getTypeOfFood();
                 TextView restaurantName = findViewById(R.id.restaurant_name);
                 TextView restaurantAddress = findViewById(R.id.restaurant_address);
                 TextView restaurantAddressId = findViewById(R.id.restaurant_address_id);
                 TextView restaurantNameId = findViewById(R.id.restaurant_id);
                 TextView typeOfFood = findViewById(R.id.type_of_food);
                 TextView typeOfFoodId = findViewById(R.id.type_of_food_id);
-                restaurantName.setText(rName);
                 restaurantName.setVisibility(View.VISIBLE);
-                int sizeTest = restaurants.getListSize();
-                t.setText("" + sizeTest);
+                restaurantAddress.setVisibility(View.VISIBLE);
+                restaurantAddressId.setVisibility(View.VISIBLE);
+                restaurantNameId.setVisibility(View.VISIBLE);
+                typeOfFood.setVisibility(View.VISIBLE);
+                typeOfFoodId.setVisibility(View.VISIBLE);
                 if (restaurants.getOpenRestaurantsList().size() > 1) {
-                    String rAddress = restaurant.getAddress();
-                    String rFood = restaurant.getTypeOfFood();
-                    restaurantAddress.setText(rAddress);
-                    typeOfFood.setText(rFood);
-                    restaurantAddress.setVisibility(View.VISIBLE);
-                    restaurantAddressId.setVisibility(View.VISIBLE);
-                    restaurantNameId.setVisibility(View.VISIBLE);
-                    typeOfFood.setVisibility(View.VISIBLE);
-                    typeOfFoodId.setVisibility(View.VISIBLE);
-                } else {
-                    restaurantAddress.setVisibility(View.INVISIBLE);
-                    restaurantAddressId.setVisibility(View.INVISIBLE);
-                    restaurantNameId.setVisibility(View.INVISIBLE);
-                    typeOfFood.setVisibility(View.INVISIBLE);
-                    typeOfFoodId.setVisibility(View.INVISIBLE);
+                    oscillate(restaurantName, restaurantAddress, typeOfFood, restaurants.getOpenRestaurantsList());
                 }
+                restaurantAddress.setText(rAddress);
+                typeOfFood.setText(rFood);
+                restaurantName.setText(rName);
             }
         });
+    }
+
+    public void oscillate(final TextView restaurantName, final TextView restaurantAddress,
+            final TextView typeOfFood, final List<Restaurant> testList) {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 0);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 100);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 200);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 300);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 400);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 500);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 600);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 700);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 800);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 900);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 1000);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 1100);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 1200);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 1300);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 1400);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 1500);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 1700);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 1900);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 2100);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 2400);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 2700);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setStats(restaurantName, typeOfFood, restaurantAddress, testList);
+            }
+        }, 3100);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Restaurant r = testList.get(index);
+                String rName = r.getName();
+            }
+        }, 3500);
+    }
+
+    public void increaseIndex(List<Restaurant> testList) {
+        index++;
+        if (index == testList.size()) {
+            index = 0;
+        }
+    }
+
+    public void setStats(final TextView restaurantName, final TextView typeOfFood, final TextView restaurantAddress,
+                         final List<Restaurant> testList) {
+        Restaurant r = testList.get(index);
+        String rName = r.getName();
+        String rAddress = r.getAddress();
+        String rFood = r.getTypeOfFood();
+        restaurantAddress.setText(rAddress);
+        typeOfFood.setText(rFood);
+        restaurantName.setText(rName);
+        increaseIndex(testList);
     }
 }

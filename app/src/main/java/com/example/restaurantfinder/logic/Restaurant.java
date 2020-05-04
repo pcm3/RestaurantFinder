@@ -81,7 +81,7 @@ public class Restaurant {
         for (int i = 1; i < hours.length; i += 2) {
             int open = hours[i - 1];
             int close = hours[i];
-            if (time >= open && time <= close) {
+            if (time >= open && time < close) {
                 return true;
             }
         }

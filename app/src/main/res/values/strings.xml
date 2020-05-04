@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">RestaurantFinder</string>
     <string name="search_button">Find Restaurant</string>
-    <string name="top_text">Press Button Below to Generate Restaurant</string>
+    <string name="top_text">Press Button to Generate Random Green St Restaurant</string>
     <string name="date_check">Number of restaurants open: </string>
     <string name="restaurant_id">Restaurant: </string>
     <string name="restaurant_address">Address: </string>
