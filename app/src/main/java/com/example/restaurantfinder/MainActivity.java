@@ -3,6 +3,7 @@ package com.example.restaurantfinder;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.icu.util.Calendar;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     restaurantAddress.setText(rAddress);
                     typeOfFood.setText(rFood);
                     restaurantName.setText(rName);
+                    makeSound();
                 }
             }
         });
@@ -97,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void oscillate(final TextView restaurantName, final TextView restaurantAddress,
             final TextView typeOfFood, final List<Restaurant> testList, final String name, final String address, final String food) {
+        final MediaPlayer drum = MediaPlayer.create(this, R.raw.drum);
+        drum.start();
+        drum.setLooping(true);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -254,11 +259,18 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                drum.setLooping(false);
+                drum.stop();
                 typeOfFood.setText(food);
                 restaurantName.setText(name);
                 restaurantAddress.setText(address);
+                makeSound();
             }
         }, 3500);
+    }
+    public void makeSound() {
+        MediaPlayer tada = MediaPlayer.create(this, R.raw.tada);
+        tada.start();
     }
 
     public void increaseIndex(List<Restaurant> testList) {
