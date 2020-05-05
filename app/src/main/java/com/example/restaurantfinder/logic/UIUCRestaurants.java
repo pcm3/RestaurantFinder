@@ -247,6 +247,7 @@ public class UIUCRestaurants {
                 return true;
             }
         }
+
         return false;
     }
 

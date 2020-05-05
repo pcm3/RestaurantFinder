@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 restaurants.getOpenRestaurants(dayStr, timeInt);
                 int listSize = restaurants.getListSize();
                 t.setText("" + listSize);
+
                 handler.postDelayed(this, 500);
             }
         });
