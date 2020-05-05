@@ -104,11 +104,19 @@ public class MainActivity extends AppCompatActivity {
                 typeOfFoodId.setVisibility(View.VISIBLE);
                 if (restaurants.getOpenRestaurantsList().size() > 1) {
                     oscillate(restaurantName, restaurantAddress, typeOfFood, restaurants.getOpenRestaurantsList(), rName, rAddress, rFood);
-                } else {
+                } else if (restaurants.getOpenRestaurantsList().size() == 1) {
                     restaurantAddress.setText(rAddress);
                     typeOfFood.setText(rFood);
                     restaurantName.setText(rName);
                     makeSound();
+                } else {
+                    restaurantName.setText(rName);
+                    u.setVisibility(View.INVISIBLE);
+                    restaurantAddress.setVisibility(View.INVISIBLE);
+                    restaurantAddressId.setVisibility(View.INVISIBLE);
+                    restaurantNameId.setVisibility(View.INVISIBLE);
+                    typeOfFood.setVisibility(View.INVISIBLE);
+                    typeOfFoodId.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -119,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         final MediaPlayer drum = MediaPlayer.create(this, R.raw.drum);
         drum.start();
         drum.setLooping(true);
+        increaseIndex(testList);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -292,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void increaseIndex(List<Restaurant> testList) {
         index++;
-        if (index == testList.size()) {
+        if (index >= testList.size()) {
             index = 0;
         }
     }
