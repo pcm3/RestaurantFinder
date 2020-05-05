@@ -140,6 +140,7 @@ public class UIUCRestaurants {
     private Random r = new Random();
 
     private List<Restaurant> openRestaurants = new ArrayList<>();
+    private List<Restaurant> unlikedRestaurants = new ArrayList<>();
 
     public UIUCRestaurants() {
         allRestaurants = new Restaurant[]{pandaExpress, sakanaya, spoonhouse, midSummerLounge, aRiRang, sigGrill, noodles, chipotle, bangkok,
@@ -151,7 +152,7 @@ public class UIUCRestaurants {
     public void getOpenRestaurants(String day, int time) {
         List<Restaurant> temp = new ArrayList<>();
         for (int i = 0; i < allRestaurants.length; i++) {
-            if (allRestaurants[i].isOpen(day, time)) {
+            if (allRestaurants[i].isOpen(day, time) && !(isUnlikedRestaurant((allRestaurants[i])))) {
                 temp.add(allRestaurants[i]);
             }
         }
@@ -172,6 +173,19 @@ public class UIUCRestaurants {
 
     public int getListSize() {
         return openRestaurants.size();
+    }
+
+    public void newUnlikedRestaurant(Restaurant r) {
+        unlikedRestaurants.add(r);
+    }
+
+    private boolean isUnlikedRestaurant(Restaurant r) {
+        for (int i = 0; i < unlikedRestaurants.size(); i++) {
+            if (r.rEquals(unlikedRestaurants.get(i))) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

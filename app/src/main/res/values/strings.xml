@@ -6,4 +6,6 @@
     <string name="restaurant_id">Restaurant: </string>
     <string name="restaurant_address">Address: </string>
     <string name="type_of_food">Type of Food: </string>
+    <string name="dont_like">I dont like this restaurant</string>
+
 </resources>

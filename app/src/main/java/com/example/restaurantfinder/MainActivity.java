@@ -23,12 +23,15 @@ public class MainActivity extends AppCompatActivity {
     UIUCRestaurants restaurants = new UIUCRestaurants();
     int index = 0;
     final Handler handler = new Handler();
+    Restaurant checkRestautant = new Restaurant("", "", "", new int[]{}, new int[]{}, new int[]{},
+            new int[]{}, new int[]{}, new int[]{}, new int[]{});
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final Button b = findViewById(R.id.search_button);
+        final Button u = findViewById(R.id.unlikeButton);
 
         handler.post(new Runnable() {
             @Override
@@ -68,11 +71,18 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(this, 500);
             }
         });
+        u.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                restaurants.newUnlikedRestaurant((checkRestautant));
+            }
+        });
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Restaurant restaurant = restaurants.getRandomRestaurant();
+                checkRestautant = restaurant;
                 String rName = restaurant.getName();
                 String rAddress = restaurant.getAddress();
                 String rFood = restaurant.getTypeOfFood();
@@ -84,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 TextView restaurantNameId = findViewById(R.id.restaurant_id);
                 TextView typeOfFood = findViewById(R.id.type_of_food);
                 TextView typeOfFoodId = findViewById(R.id.type_of_food_id);
+                u.setVisibility(View.VISIBLE);
                 main.setVisibility(View.VISIBLE);
                 restaurantName.setVisibility(View.VISIBLE);
                 restaurantAddress.setVisibility(View.VISIBLE);

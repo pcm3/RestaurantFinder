@@ -1,4 +1,7 @@
 package com.example.restaurantfinder.logic;
+
+import java.util.Arrays;
+
 /**This class is to make restaurants in the form of objects.
  * It will store the restaurant's name, type of food, location, and hours of operation.*/
 public class Restaurant {
@@ -98,5 +101,39 @@ public class Restaurant {
 
     public String getAddress() {
         return address;
+    }
+
+    public boolean rEquals(Restaurant r) {
+        if (!(name.equals(r.getName()))) {
+            return false;
+        }
+        if (!(typeOfFood.equals(r.getTypeOfFood()))) {
+            return false;
+        }
+        if (!(address.equals(r.getAddress()))) {
+            return false;
+        }
+        if (!(Arrays.equals(monHours, r.monHours))) {
+            return false;
+        }
+        if (!(Arrays.equals(tuesHours, r.tuesHours))) {
+            return false;
+        }
+        if (!(Arrays.equals(wedHours, r.wedHours))) {
+            return false;
+        }
+        if (!(Arrays.equals(thursHours, r.thursHours))) {
+            return false;
+        }
+        if (!(Arrays.equals(friHours, r.friHours))) {
+            return false;
+        }
+        if (!(Arrays.equals(satHours, r.satHours))) {
+            return false;
+        }
+        if (!(Arrays.equals(sunHours, r.sunHours))) {
+            return false;
+        }
+        return true;
     }
 }
