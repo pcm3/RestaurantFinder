@@ -18,14 +18,25 @@ import com.example.restaurantfinder.logic.UIUCRestaurants;
 
 import java.util.List;
 
+/**the main activity for the app.*/
 public class MainActivity extends AppCompatActivity {
 
+    /**an instance created of the UIUCRestaurants class.*/
     UIUCRestaurants restaurants = new UIUCRestaurants();
+
+    /**an index to be used for looping through restaurants at points in the code.*/
     int index = 0;
+
+    /**an instance of Handler.*/
     final Handler handler = new Handler();
+
+    /**Restaurant variable to be used as a reference variable when adding/removing
+     * restaurants from the unliked restaurants.*/
     Restaurant checkRestaurant = new Restaurant("", "", "", new int[]{}, new int[]{}, new int[]{},
             new int[]{}, new int[]{}, new int[]{}, new int[]{});
 
+    /**Called by the Android system when the activity is to be set up.
+     * @param savedInstanceState info from the previously terminated instance (unused). */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,6 +144,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**Oscillates through the list of Restaurants before showing the chosen one.
+     * the speed of oscillation gradually decreases as time goes on.
+     * While oscillating, a drum roll will sound, and a horn will play at the end.
+     * @param restaurantName the TextView for where the name of the restaurant goes.
+     * @param restaurantAddress the TextView for where the address goes.
+     * @param typeOfFood the TextView for where the type of food goes.
+     * @param testList the list of open restaurants.
+     * @param name the name of the randomly chosen restaurant.
+     * @param address the address of the randomly chosen restaurant.
+     * @param food the food type of the randomly chosen restaurant.*/
     public void oscillate(final TextView restaurantName, final TextView restaurantAddress,
             final TextView typeOfFood, final List<Restaurant> testList, final String name, final String address, final String food) {
         final MediaPlayer drum = MediaPlayer.create(this, R.raw.drum);
@@ -305,11 +326,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 3500);
     }
+
+    /**Makes the noise of a trumpet.*/
     public void makeSound() {
         MediaPlayer tada = MediaPlayer.create(this, R.raw.tada);
         tada.start();
     }
 
+    /**increases the value of index by one.
+     * if index is ever equal to or greater than the size of the open restaurants,
+     * the value will be reset to zero.
+     * @param testList the list of open restaurants.*/
     public void increaseIndex(List<Restaurant> testList) {
         index++;
         if (index >= testList.size()) {
@@ -317,6 +344,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**sets the values of the name, food, and address TextViews.
+     * @param restaurantName the TextView for the name.
+     * @param typeOfFood the TextView for the type of food.
+     * @param restaurantAddress the TextView for the address.
+     * @param testList the list of open restaurants.*/
     public void setStats(final TextView restaurantName, final TextView typeOfFood, final TextView restaurantAddress,
                          final List<Restaurant> testList) {
         Restaurant r = testList.get(index);

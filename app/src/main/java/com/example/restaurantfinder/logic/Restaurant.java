@@ -37,7 +37,16 @@ public class Restaurant {
     private int[] sunHours;
 
     /**the constructor of the class.
-     * */
+     * @param setName the name of the restaurant.
+     * @param setTypeOfFood the type of food of the restaurant.
+     * @param setAddress the address of the restaurant.
+     * @param setMonHours the hours of operation for the restaurant on Monday.
+     * @param setTuesHours the hours of operation for the restaurant on Tuesday.
+     * @param setWedHours the hours of operation for the restaurant on Wednesday.
+     * @param setThursHours the hours of operation for the restaurant on Thursday.
+     * @param setFriHours the hours of operation for the restaurant on Friday.
+     * @param setSatHours the hours of operation for the restaurant on Saturday.
+     * @param setSunHours the hours of operation for the restaurant on Sunday.*/
     public Restaurant(String setName, String setTypeOfFood, String setAddress, int[] setMonHours,
                       int[] setTuesHours, int[] setWedHours, int[] setThursHours, int[] setFriHours,
                       int[] setSatHours, int[] setSunHours) {
@@ -53,10 +62,15 @@ public class Restaurant {
         sunHours = setSunHours;
     }
 
+    /**other constructor for the class.
+     * @param setName the name of the restaurant.*/
     public Restaurant(String setName) {
         name = setName;
     }
 
+    /**gets the hours of operation for a restaurant for a specific day.
+     * @param day the current day.
+     * @return the array of hours for the given day.*/
     public int[] getHours(String day) {
         if (day == "Monday") {
             return monHours;
@@ -76,6 +90,10 @@ public class Restaurant {
         return new int[]{};
     }
 
+    /**tells whether the restaurant is currently open or not.
+     * @param day the current day.
+     * @param time the current time.
+     * @return true if the restaurant is open.*/
     public boolean isOpen(String day, int time) {
         int[] hours = getHours(day);
         if (hours.length == 0) {
@@ -91,18 +109,27 @@ public class Restaurant {
         return false;
     }
 
+    /**gets the name of the current instance of Restaurant.
+     * @return name.*/
     public String getName() {
         return name;
     }
 
+    /**gets the type of food of the current instance of Restaurant.
+     * @return typeOfFood.*/
     public String getTypeOfFood() {
         return typeOfFood;
     }
 
+    /**gets the address of the current instance of Restaurant.
+     * @return address.*/
     public String getAddress() {
         return address;
     }
 
+    /**returns whether or not the current instance of Restaurant is equal to the passed argument.
+     * @param r the Restaurant being compared to the current instance.
+     * @return true if the two are equal.*/
     public boolean rEquals(Restaurant r) {
         if (!(name.equals(r.getName()))) {
             return false;
