@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     UIUCRestaurants restaurants = new UIUCRestaurants();
     int index = 0;
     final Handler handler = new Handler();
-    Restaurant checkRestautant = new Restaurant("", "", "", new int[]{}, new int[]{}, new int[]{},
+    Restaurant checkRestaurant = new Restaurant("", "", "", new int[]{}, new int[]{}, new int[]{},
             new int[]{}, new int[]{}, new int[]{}, new int[]{});
 
     @Override
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         u.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                restaurants.newUnlikedRestaurant((checkRestautant));
+                restaurants.newUnlikedRestaurant((checkRestaurant));
                 undo.setVisibility(View.VISIBLE);
             }
         });
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         undo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                restaurants.undoDislike(checkRestautant);
+                restaurants.undoDislike(checkRestaurant);
                 undo.setVisibility(View.INVISIBLE);
             }
         });
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Restaurant restaurant = restaurants.getRandomRestaurant();
-                checkRestautant = restaurant;
+                checkRestaurant = restaurant;
                 String rName = restaurant.getName();
                 String rAddress = restaurant.getAddress();
                 String rFood = restaurant.getTypeOfFood();
