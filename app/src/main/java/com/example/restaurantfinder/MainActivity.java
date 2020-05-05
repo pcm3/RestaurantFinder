@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final Button b = findViewById(R.id.search_button);
         final Button u = findViewById(R.id.unlikeButton);
+        final Button undo = findViewById(R.id.undoButton);
 
         handler.post(new Runnable() {
             @Override
@@ -75,6 +76,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 restaurants.newUnlikedRestaurant((checkRestautant));
+                undo.setVisibility(View.VISIBLE);
+            }
+        });
+
+        undo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                restaurants.undoDislike(checkRestautant);
+                undo.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -94,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 TextView restaurantNameId = findViewById(R.id.restaurant_id);
                 TextView typeOfFood = findViewById(R.id.type_of_food);
                 TextView typeOfFoodId = findViewById(R.id.type_of_food_id);
+                undo.setVisibility(View.INVISIBLE);
                 u.setVisibility(View.VISIBLE);
                 main.setVisibility(View.VISIBLE);
                 restaurantName.setVisibility(View.VISIBLE);

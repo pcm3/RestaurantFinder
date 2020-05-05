@@ -188,4 +188,12 @@ public class UIUCRestaurants {
         return false;
     }
 
+    public void undoDislike(Restaurant r) {
+        for (int i = (unlikedRestaurants.size() - 1); i >= 0; i--) {
+            if (r.rEquals(unlikedRestaurants.get(i))) {
+                unlikedRestaurants.remove(i);
+            }
+        }
+    }
+
 }
